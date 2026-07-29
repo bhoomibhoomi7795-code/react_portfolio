@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-surface-hover: #121212;
+    --bg-card: #050505;
+    
+    --text-primary: #FAFAFA;
+    --text-secondary: #A1A1AA;
+    --text-muted: #52525B;
+    
+    --border-subtle: #18181B;
+    --border-strong: #27272A;
+    --border-highlight: #3F3F46;
+
+    /* Dynamic Accent Color (Default: Electric Cyan/Blue) */
+    --accent: #00F0FF;
+    --accent-rgb: 0, 240, 255;
+    --accent-glow: rgba(0, 240, 255, 0.15);
+    --accent-glow-strong: rgba(0, 240, 255, 0.4);
+  }
+
+  [data-accent="lime"] {
+    --accent: #00FF66;
+    --accent-rgb: 0, 255, 102;
+    --accent-glow: rgba(0, 255, 102, 0.15);
+    --accent-glow-strong: rgba(0, 255, 102, 0.4);
+  }
+
+  [data-accent="magenta"] {
+    --accent: #FF007F;
+    --accent-rgb: 255, 0, 127;
+    --accent-glow: rgba(255, 0, 127, 0.15);
+    --accent-glow-strong: rgba(255, 0, 127, 0.4);
+  }
+
+  [data-accent="amber"] {
+    --accent: #FFB800;
+    --accent-rgb: 255, 184, 0;
+    --accent-glow: rgba(255, 184, 0, 0.15);
+    --accent-glow-strong: rgba(255, 184, 0, 0.4);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  selection-background-color: var(--accent);
+  selection-color: #000000;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #000000;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Subtle glow utility classes */
+.glow-accent-sm {
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.glow-accent-lg {
+  box-shadow: 0 0 35px var(--accent-glow-strong);
+}
+
+.border-accent-hover:hover {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+/* Grid & Dots minimal background pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (min-width: 1024px) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
